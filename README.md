@@ -1,17 +1,20 @@
-# my-todo-app
+# Richard Tsai Jac App
 
-A Jac client-side application with React support.
+UMID: 61772289
 
 ## Project Structure
 
 ```
 my-todo-app/
-├── jac.toml              # Project configuration
+├── jac.toml              # Server: nodes, AI, walkers
 ├── main.jac              # Main application entry
+├── frontend.cl.jac       # Client: state, UI, method declarations
+├── frontend.impl.jac     # Client: method implementations
+├── styles.css            # Styles
 ├── components/           # Reusable components
-│   └── AuthForm.cl.jac     # Example Jac component
-│   └── IngredientItem.cl.jac     # Example Jac component
-│   └── TodoItem.cl.jac     # Example Jac component
+│   └── AuthForm.cl.jac           # Login/signup form
+│   └── IngredientItem.cl.jac     # Single todo display
+│   └── TodoItem.cl.jac           # Single ingredient display
 ├── assets/               # Static assets (images, fonts, etc.)
 └── build/                # Build output (generated)
 ```
