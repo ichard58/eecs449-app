@@ -10,6 +10,7 @@ cl {
 }
 
 import from byllm.lib { Model }
+import from datetime { date }
 import from uuid { uuid4 }
 
 glob llm = Model(model_name="gemini/gemini-2.5-flash");
@@ -36,6 +37,14 @@ def categorize(title: str) -> Category by llm();
 
 """Generate a shopping list of ingredients needed for a described meal."""
 def generate_ingredients(meal_description: str) -> list[Ingredient] by llm();
+
+"""Return true if due_date (YYYY-MM-DD) is before today."""
+def is_overdue(due_date: str) -> bool {
+    if not due_date {
+        return False;
+    }
+    return due_date < str(date.today());
+}
 
 # --- Data Nodes ---
 
@@ -74,7 +83,8 @@ walker:priv AddTodo {
             "title": new_todo[0].title,
             "completed": new_todo[0].completed,
             "category": new_todo[0].category,
-            "due_date": new_todo[0].due_date
+            "due_date": new_todo[0].due_date,
+            "is_overdue": is_overdue(new_todo[0].due_date)
         };
     }
 }
@@ -92,7 +102,8 @@ walker:priv ListTodos {
             "title": here.title,
             "completed": here.completed,
             "category": here.category,
-            "due_date": here.due_date
+            "due_date": here.due_date,
+            "is_overdue": is_overdue(here.due_date)
         });
     }
 

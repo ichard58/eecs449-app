@@ -4,19 +4,20 @@ UMID: 61772289
 
 Added a due date for each item on the Todo list.
 Just select when a task is due when inputting it, and it will display in the list.
-(I really tried to implement highlighting overdue items too, but I couldn't figure it out in time for submission.
-I'm still working on it though.)
+Overdue items will be highlighted red.
 
 ## Relevant Code
-Added a new "due_date" attribute to the TodoItems, so relevant code can be found in:
+Added new "due_date" and "is_overdue" attributes to the TodoItems, so relevant code can be found in:
 
-main.jac: node Todo, walker AddTodo, walker ListTodo
+main.jac: node Todo, walker AddTodo, walker ListTodo, is_overdue helper function
 
 frontend.impl.jac: app.addTodo, app.toggleTodo
 
 frontend.cl.jac: newTodoDueDate: str = "" in the declarations block, new input field on line 99
 
-TodoItem.cl.jac: new span to display due date on line 15
+TodoItem.cl.jac: new span to display due date on line 15, new if statements for overdue items
+
+styles.css: new style class for overdue items
 
 ## Getting Started
 

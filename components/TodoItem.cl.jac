@@ -1,18 +1,32 @@
 """Todo item component."""
 
 def:pub TodoItem(todo: dict, onToggle: any, onDelete: any) -> any {
+    isOverdue = (todo.is_overdue and not todo.completed);
+
+    itemClass = ("todo-item overdue" if isOverdue else "todo-item");
+    titleClass = (
+        "todo-title-completed" if todo.completed else (
+            "todo-title-overdue" if isOverdue else "todo-title"
+        )
+    );
+    dueDateClass = (
+        "todo-due-overdue" if isOverdue else (
+            "todo-title-completed" if todo.completed else "todo-due"
+        )
+    );
+
     return
-        <div className="todo-item">
+        <div className={itemClass}>
             <input
                 type="checkbox"
                 checked={todo.completed}
                 onChange={lambda -> None { onToggle(todo.id); }}
                 className="todo-checkbox"
             />
-            <span className={("todo-title-completed" if todo.completed else "todo-title")}>
+            <span className={titleClass}>
                 {todo.title}
             </span>
-            <span className={("todo-title-completed" if todo.completed else "todo-title")}>
+            <span className={dueDateClass}>
                 Due: {todo.due_date}
             </span>
             {(

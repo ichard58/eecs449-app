@@ -19,7 +19,8 @@ impl app.addTodo -> None {
         "title": newTodo.title,
         "completed": newTodo.completed,
         "category": newTodo.category,
-        "due_date": newTodo.due_date
+        "due_date": newTodo.due_date,
+        "is_overdue": newTodo.is_overdue
     }]);
     newTodoText = "";
     newTodoDueDate = "";
@@ -33,7 +34,8 @@ impl app.toggleTodo(todoId: str) -> None {
                 return {
                     "id": t.id, "title": t.title,
                     "completed": not t.completed, "category": t.category,
-                    "due_date": t.due_date
+                    "due_date": t.due_date,
+                    "is_overdue": t.is_overdue
                 };
             }
             return t;
