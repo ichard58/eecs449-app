@@ -4,6 +4,8 @@ UMID: 61772289
 
 Added a due date for each item on the Todo list.
 Just select when a task is due when inputting it, and it will display in the list.
+(I really tried to implement highlighting overdue items too, but I couldn't figure it out in time for submission.
+I'm still working on it though.)
 
 ## Relevant Code
 Added a new "due_date" attribute to the TodoItems, so relevant code can be found in:
