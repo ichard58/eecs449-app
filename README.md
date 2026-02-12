@@ -3,9 +3,9 @@
 UMID: 61772289
 
 Added a due date for each item on the Todo list.
-
 Just select when a task is due when inputting it, and it will display in the list.
 
+## Relevant Code
 Added a new "due_date" attribute to the TodoItems, so relevant code can be found in:
 
 main.jac: node Todo, walker AddTodo, walker ListTodo
