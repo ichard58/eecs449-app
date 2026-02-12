@@ -48,6 +48,4 @@ my-todo-app/
 │   └── AuthForm.cl.jac           # Login/signup form
 │   └── IngredientItem.cl.jac     # Single todo display
 │   └── TodoItem.cl.jac           # Single ingredient display
-├── assets/               # Static assets (images, fonts, etc.)
-└── build/                # Build output (generated)
 ```
