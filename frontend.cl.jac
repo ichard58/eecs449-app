@@ -23,6 +23,7 @@ def:pub app -> any {
         loading: bool = False,
         todos: list = [],
         newTodoText: str = "",
+        newTodoDueDate: str = "",
         todosLoading: bool = True,
         mealInput: str = "",
         ingredients: list = [],
@@ -95,6 +96,12 @@ def:pub app -> any {
                                         placeholder="What needs to be done?"
                                         className="todo-input"
                                     />
+                                    <input
+                                        type="date"
+                                        value={newTodoDueDate}
+                                        onChange={lambda e: any -> None { newTodoDueDate = e.target.value; }}
+                                        className="todo-input"
+                                    /> 
                                     <button
                                         onClick={lambda -> None { addTodo(); }}
                                         className="btn-add"

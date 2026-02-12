@@ -9,13 +9,17 @@ impl app.fetchTodos -> None {
 
 impl app.addTodo -> None {
     if not newTodoText.trim() { return; }
-    response = root spawn AddTodo(title=newTodoText);
+    response = root spawn AddTodo(
+        title=newTodoText,
+        due=newTodoDue
+    );
     newTodo = response.reports[0];
     todos = todos.concat([{
         "id": newTodo.id,
         "title": newTodo.title,
         "completed": newTodo.completed,
-        "category": newTodo.category
+        "category": newTodo.category,
+        "due": newTodo.due;
     }]);
     newTodoText = "";
 }
@@ -27,7 +31,8 @@ impl app.toggleTodo(todoId: str) -> None {
             if t.id == todoId {
                 return {
                     "id": t.id, "title": t.title,
-                    "completed": not t.completed, "category": t.category
+                    "completed": not t.completed, "category": t.category,
+                    "due": t.due
                 };
             }
             return t;
