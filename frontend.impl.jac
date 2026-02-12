@@ -11,7 +11,7 @@ impl app.addTodo -> None {
     if not newTodoText.trim() { return; }
     response = root spawn AddTodo(
         title=newTodoText,
-        due=newTodoDue
+        due_date=newTodoDueDate
     );
     newTodo = response.reports[0];
     todos = todos.concat([{
@@ -19,9 +19,10 @@ impl app.addTodo -> None {
         "title": newTodo.title,
         "completed": newTodo.completed,
         "category": newTodo.category,
-        "due": newTodo.due;
+        "due_date": newTodo.due_date
     }]);
     newTodoText = "";
+    newTodoDueDate = "";
 }
 
 impl app.toggleTodo(todoId: str) -> None {
@@ -32,7 +33,7 @@ impl app.toggleTodo(todoId: str) -> None {
                 return {
                     "id": t.id, "title": t.title,
                     "completed": not t.completed, "category": t.category,
-                    "due": t.due
+                    "due_date": t.due_date
                 };
             }
             return t;

@@ -12,6 +12,9 @@ def:pub TodoItem(todo: dict, onToggle: any, onDelete: any) -> any {
             <span className={("todo-title-completed" if todo.completed else "todo-title")}>
                 {todo.title}
             </span>
+            <span className={("todo-title-completed" if todo.completed else "todo-title")}>
+                {todo.due_date}
+            </span>
             {(
                 <span className="category-badge">{todo.category}</span>
             ) if todo.category and todo.category != "other" else None}

@@ -44,7 +44,7 @@ node Todo {
         title: str,
         completed: bool = False,
         category: str = "other",
-        due: str = "";
+        due_date: str = "";
 }
 
 node MealIngredient {
@@ -59,7 +59,7 @@ node MealIngredient {
 
 walker:priv AddTodo {
     has title: str;
-    has due: str;
+    has due_date: str;
 
     can create with Root entry {
         category = str(categorize(self.title)).split(".")[-1].lower();
@@ -67,14 +67,14 @@ walker:priv AddTodo {
             id=str(uuid4()),
             title=self.title,
             category=category,
-            due=self.due
+            due_date=self.due_date
         );
         report {
             "id": new_todo[0].id,
             "title": new_todo[0].title,
             "completed": new_todo[0].completed,
             "category": new_todo[0].category,
-            "due": new_todo[0].due
+            "due_date": new_todo[0].due_date
         };
     }
 }
@@ -92,7 +92,7 @@ walker:priv ListTodos {
             "title": here.title,
             "completed": here.completed,
             "category": here.category,
-            "due": here.due
+            "due_date": here.due_date
         });
     }
 
